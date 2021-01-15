@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-Github.setup        PJK libcbor 0.8.0
+Github.setup        PJK libcbor v0.8.0
 revision            0
 categories          devel
 platforms           darwin
