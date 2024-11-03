@@ -1,0 +1,67 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        Netatalk netatalk 4.0.4
+
+categories          net
+license             GPL-2+
+platforms           darwin
+maintainers         {openmaintainer github:trodemaster}
+
+description         Netatalk is a freely-available Open Source AFP fileserver.
+long_description    Netatalk is a freely-available Open Source AFP fileserver. \
+                    It allows Unix-like operating systems to serve as file \
+                    servers for Macintosh computers.
+
+homepage            https://github.com/Netatalk/netatalk
+
+depends_build       port:autoconf \
+                    port:automake \
+                    port:libtool
+
+depends_lib         port:openssl \
+                    port:dbus \
+                    port:libevent \
+                    port:libgcrypt \
+                    port:libgpg-error \
+                    port:libiconv \
+                    port:libuuid \
+                    port:libwrap \
+                    port:libzdb \
+                    port:avahi \
+                    port:krb5 \
+                    port:libacl \
+                    port:libldap \
+                    port:libpcap \
+                    port:libtirpc \
+                    port:libxml2 \
+                    port:net-snmp \
+                    port:poppler \
+                    port:python310
+
+use_autoreconf      yes
+autoreconf.args     -fvi
+
+configure.args      --with-init-style=none \
+                    --with-bdb=/opt/local \
+                    --with-krb5=/opt/local \
+                    --with-ldap=/opt/local \
+                    --with-libevent=/opt/local \
+                    --with-libgcrypt-prefix=/opt/local \
+                    --with-libgpg-error-prefix=/opt/local \
+                    --with-libiconv=/opt/local \
+                    --with-libwrap=/opt/local \
+                    --with-libzdb=/opt/local \
+                    --with-openssl=/opt/local \
+                    --with-poppler=/opt/local \
+                    --with-python=/opt/local/bin/python3.10 \
+                    --with-tdb=/opt/local \
+                    --with-tirpc=/opt/local \
+                    --with-xml2=/opt/local \
+                    --with-zlib=/opt/local
+
+livecheck.type      regex
+livecheck.url       https://github.com/Netatalk/netatalk/releases
+livecheck.regex     {Latest release.*?v?(\d+(?:\.\d+)+)}
