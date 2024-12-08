@@ -7,12 +7,12 @@ PortGroup           openssl 1.0
 
 name                netatalk4
 
-github.setup        Netatalk netatalk netatalk-4-0-4
-version             4.0.4
-
-checksums           rmd160  11f5b7b7a67e12964bffd54a52358fb90dfbeba8 \
-                    sha256  99fab12aa17094391a5a5774e738df7cf09040da5bfc5a384fc005045e072caf \
-                    size    1241115
+github.setup        Netatalk netatalk netatalk-4-0-7
+github.tarball_from archive
+revision            0
+checksums           rmd160  4df91ae8f762325defb9fb8cc3e7c4ce5870ba41 \
+                    sha256  765528244c0cd7e8da0bff8cf98bf71932a63e68c1c9ff5a3da54e1975210fbb \
+                    size    1328752
 
 categories          net
 license             GPL-2+
