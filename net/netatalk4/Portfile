@@ -1,0 +1,56 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0 
+PortGroup           meson 1.0
+PortGroup           openssl 1.0
+
+name                netatalk4
+
+github.setup        Netatalk netatalk netatalk-4-0-4
+version             4.0.4
+
+checksums           rmd160  11f5b7b7a67e12964bffd54a52358fb90dfbeba8 \
+                    sha256  99fab12aa17094391a5a5774e738df7cf09040da5bfc5a384fc005045e072caf \
+                    size    1241115
+
+categories          net
+license             GPL-2+
+maintainers         {openmaintainer github:trodemaster}
+
+description         Netatalk is a freely-available Open Source AFP fileserver.
+long_description    Netatalk is a freely-available Open Source AFP fileserver. \
+                    It allows Unix-like operating systems to serve as file \
+                    servers for Macintosh computers.
+
+homepage            https://github.com/Netatalk/netatalk
+
+# berkeley-db libtool automake autoconf libevent libgcrypt mysql openssl@1.1 libressl pkg-config
+
+depends_build       port:autoconf \
+                    port:meson \
+                    port:automake \
+                    port:libtool
+
+depends_lib         port:db48 \
+                    port:openssl11 \
+                    port:libevent \
+                    port:libgcrypt \
+                    port:mysql8 \
+                    port:avahi \
+                    port:python312
+
+#use_autoreconf      yes
+#autoreconf.args     -fvi
+#configure.args      -Dbuildtype=release \ 
+#                    -Dwith-bdb-path==${prefix}/lib/db48
+#  error: unrecognized arguments: --with-ssl-dir=/opt/local/lib/openssl-1.1/ --with-bdb=/opt/local/lib/db48
+# curl https://www.unicode.org/Public/UNIDATA/UnicodeData.txt --output UnicodeData.txt
+#configure.args-delete --prefix=/opt/local
+
+configure.args      -Dwith-bdb-path=/Users/blake/scratch/netatalk/bdb \
+                    -Dwith-unicode-data-path=/Users/blake/scratch/netatalk
+
+#livecheck.type      regex
+#livecheck.url       https://github.com/Netatalk/netatalk/releases
+#livecheck.regex     {Latest release.*?v?(\d+(?:\.\d+)+)}
