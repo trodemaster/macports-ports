@@ -6,6 +6,7 @@ PortGroup           meson 1.0
 PortGroup           openssl 1.0
 
 name                netatalk4
+conflicts            netatalk
 
 github.setup        Netatalk netatalk netatalk-4-0-7
 github.tarball_from archive
@@ -49,8 +50,9 @@ depends_lib         port:db48 \
 #configure.args-delete --prefix=/opt/local
 
 configure.args      -Dwith-bdb-path=/Users/blake/scratch/netatalk/bdb \
-                    -Dwith-unicode-data-path=/Users/blake/scratch/netatalk
-
+                    -Dwith-unicode-data-path=/Users/blake/scratch/netatalk \
+                    -Dwith-init-style=none
+                    
 #livecheck.type      regex
 #livecheck.url       https://github.com/Netatalk/netatalk/releases
 #livecheck.regex     {Latest release.*?v?(\d+(?:\.\d+)+)}
